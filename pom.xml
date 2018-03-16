@@ -17,7 +17,7 @@
 		  <appendAssemblyId>false</appendAssemblyId>
 		  <archive>
 			<manifest>
-			  <mainClass>com.mycompany.Main</mainClass>
+			  <mainClass>com.mycompany.httpserver.Main</mainClass>
 			</manifest>
 		  </archive>
 		</configuration>
