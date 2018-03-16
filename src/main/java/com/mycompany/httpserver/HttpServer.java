@@ -8,14 +8,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 public class HttpServer implements Runnable{
     private Socket socket;
-    public HttpServer(Socket socket){
-       this.socket = socket; 
+    public HttpServer(Socket socketN){
+       this.socket = socketN; 
     }
 
     @Override
     public void run() {
         try {     
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String inputLine, outputLine, format, data;
             byte[] bytes;
@@ -44,11 +43,7 @@ public class HttpServer implements Runnable{
             outputLine = "HTTP/1.1 200 OK\r\n" 
                                 + "Content-Type: " + format + "\r\n"
                                 + "Content-Length: " + data
-                                + "\r\n\r\n";
-            out.println(outputLine);
-
-            out.close();
-            in.close();
+                                + "\r\n\r\n";   
             socket.getOutputStream().write(getHeader(outputLine, bytes));
             socket.close();
         } catch (IOException ex) {
