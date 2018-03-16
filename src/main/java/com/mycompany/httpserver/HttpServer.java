@@ -54,7 +54,7 @@ public class HttpServer implements Runnable{
                 outputLine = "HTTP/1.1 200 OK\r\n" 
                                 + "Content-Type: " + format + "\r\n"
                                 + "Content-Length: " + data
-                                +"<img src="+bytes.toString()+"/>"
+                                +"<img src="+bytes.toString()+">\r\n"
                                 + "\r\n\r\n";   
             }
             socket.getOutputStream().write(getHeader(outputLine, bytes));
